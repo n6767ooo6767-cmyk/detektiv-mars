@@ -247,3 +247,59 @@ window.addEventListener("load", () => {
     console.log("Сайт Детектив Марс успешно загружен!");
 
 });
+// ======================================
+// УВЕДОМЛЕНИЯ МАРСА
+// ======================================
+
+const inbox = [];
+
+const notification = document.createElement("div");
+
+notification.innerHTML = "‼️";
+
+notification.id = "notification";
+
+notification.style.position = "fixed";
+notification.style.top = "20px";
+notification.style.right = "20px";
+notification.style.fontSize = "32px";
+notification.style.cursor = "pointer";
+notification.style.display = "none";
+notification.style.zIndex = "99999";
+
+document.body.appendChild(notification);
+
+notification.onclick = () => {
+
+    if (inbox.length === 0) return;
+
+    let text = "🐈 Новые сообщения\n\n";
+
+    inbox.forEach(message => {
+
+        text +=
+`${message.title}
+
+Промокод:
+${message.code}
+
+`;
+
+    });
+
+    alert(text);
+
+    notification.innerHTML = "📂";
+
+};
+
+function addPromo(title, code){
+
+    inbox.push({
+        title,
+        code
+    });
+
+    notification.style.display = "block";
+
+}
