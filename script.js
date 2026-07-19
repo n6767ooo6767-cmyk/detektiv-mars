@@ -303,3 +303,135 @@ function addPromo(title, code){
     notification.style.display = "block";
 
 }
+// ======================================
+// АТМОСФЕРА
+// ======================================
+
+
+const soundButton =
+document.getElementById("soundButton");
+
+
+const soundMenu =
+document.getElementById("soundMenu");
+
+
+const volume =
+document.getElementById("volume");
+
+
+let currentSound = null;
+
+
+soundButton.onclick = () => {
+
+    soundMenu.classList.toggle("active");
+
+};
+
+
+
+function playSound(name){
+
+    if(currentSound){
+
+        currentSound.pause();
+
+    }
+
+
+    currentSound = new Audio(
+        `assets/sounds/${name}.mp3`
+    );
+
+
+    currentSound.loop = true;
+
+
+    currentSound.volume =
+    volume.value;
+
+
+    currentSound.play();
+
+
+    localStorage.setItem(
+        "marsSound",
+        name
+    );
+
+}
+
+
+
+document.querySelectorAll("[data-sound]")
+.forEach(button=>{
+
+
+    button.onclick = ()=>{
+
+        playSound(
+            button.dataset.sound
+        );
+
+    };
+
+
+});
+
+
+
+volume.oninput = ()=>{
+
+    if(currentSound){
+
+        currentSound.volume =
+        volume.value;
+
+    }
+
+};
+
+
+
+document.getElementById("stopSound")
+.onclick = ()=>{
+
+
+    if(currentSound){
+
+        currentSound.pause();
+
+        currentSound = null;
+
+    }
+
+
+    localStorage.removeItem(
+        "marsSound"
+    );
+
+
+};
+
+
+
+// запомнить выбор
+
+window.addEventListener(
+"load",
+()=>{
+
+    const saved =
+    localStorage.getItem(
+        "marsSound"
+    );
+
+
+    if(saved){
+
+        playSound(saved);
+
+    }
+
+});
