@@ -340,10 +340,16 @@ function playSound(name){
     }
 
 
-    currentSound = new Audio(
-        `assets/sounds/${name}.mp3`
-    );
+    const sounds = {
+    rain: "dragon-studio-relaxing-rain-444802.mp3",
+    leaves: "musicholder-walking-on-leaves-260279.mp3",
+    fireplace: "king_of_the_christmas-fireplace-loop-original-noise-178209.mp3"
+};
 
+
+currentSound = new Audio(
+    `assets/sounds/${sounds[name]}`
+);
 
     currentSound.loop = true;
 
