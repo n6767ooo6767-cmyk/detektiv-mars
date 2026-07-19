@@ -344,6 +344,8 @@ function playSound(name){
     rain: "dragon-studio-relaxing-rain-444802.mp3",
     leaves: "musicholder-walking-on-leaves-260279.mp3",
     fireplace: "king_of_the_christmas-fireplace-loop-original-noise-178209.mp3"
+    night: "freesound_community-night-ambience-17064.mp3",
+    cafe: "freesound_community-poeple-talking-at-cafe-ambience-6159.mp3"
 };
 
 
